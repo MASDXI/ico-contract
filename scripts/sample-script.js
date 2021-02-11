@@ -14,12 +14,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const PoE = await hre.ethers.getContractFactory("ProofOfExistence");
-  const poe = await PoE.deploy();
+  const Token = await hre.ethers.getContractFactory("ERC20FixedSupply");
+  const contract = await Token.deploy();
 
-  await poe.deployed();
+  await contract.deployed();
 
-  console.log("Proof Of Existence deployed to:", poe.address);
+  console.log("SampleToken deployed to:", contract.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
