@@ -1,30 +1,41 @@
 const { expect } = require("chai");
-const { BigNumber } = require("ethers");
 
 describe("SampleToken", function() {
 
-  const Alice = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
-  const Bob = "0xfE69C9C2291e2b44409DFc65937FBED340A2F827"
+  let token;
+  let accounts;
 
-  it("check balanceOf Alice", async function() {
+  beforeEach("Deploy contract ",async () => {
     const contract = await ethers.getContractFactory("ERC20FixedSupply");
-    const Token = await contract.deploy();
-    const totalSupply = await Token.totalSupply();
-    
-    await Token.deployed();
-    expect(await Token.balanceOf(Alice)).to.equal(totalSupply);
+    token = await contract.deploy();
+    accounts = await ethers.getSigners();
+    await token.deployed();
   });
 
-  it("transfer to Bob 10 Token", async function() {
-    const contract = await ethers.getContractFactory("ERC20FixedSupply");
-    const Token = await contract.deploy();
-    // TODO:
-    // human readable unit decimals 
-    // Hint(large number, bigNumber)
-  
-    await Token.deployed();
-    await Token.transfer(Bob,amount)
-    expect((await Token.balanceOf(Bob)).toString()).to.equal(amount);
+  it("Assigns initial balance", async function() {
+    const totalSupply = await token.totalSupply();
+    expect(await token.balanceOf(accounts[0].address)).to.equal(totalSupply);
+  });
 
+  it("Transfer adds amount to destination account", async function() {
+    await token.transfer(accounts[1].address,10)
+    expect(await token.balanceOf(accounts[1].address)).to.equal(10);
+  });
+
+  it('Transfer emits event', async () => {
+    await expect(token.transfer(accounts[1].address, 10))
+      .to.emit(token, 'Transfer')
+      .withArgs(accounts[0].address, accounts[1].address, 10);
+  });
+
+  it('Can not transfer above the amount', async () => {
+    const totalSupply = await token.totalSupply();
+    await expect(token.transfer(accounts[1].address, totalSupply+1)).to.be.reverted;
+  });
+
+  it('Can not transfer from empty account', async () => {
+    const tokenFromOtherWallet = token.connect(accounts[1].address);
+    await expect(tokenFromOtherWallet.transfer(accounts[0].address, 1))
+      .to.be.reverted;
   });
 });
