@@ -4,7 +4,7 @@ Tutorial using Hardhat(Buidler) complie, deploy and automated unit tests Solidit
 
 To run these tutorials, you must have the following installed:
 
-- [nodejs](https://nodejs.org/en/)
+- [nodejs 1](https://nodejs.org/en/)
 
 - [nvm](https://github.com/nvm-sh/nvm)
 
@@ -15,24 +15,26 @@ $ npm install
 to compile your smart contract to get an ABI and artifact of a smart contract for unit test using the command.
 
 ```bash
-$ npx hardhat compile
+$ npm run compile
 ```
 
 for a unit testing smart contract using the command line.
 
 ```
-$ npx hardhat test
+$ npm run test
 ```
 expecting `sample-test.js` result.
 ```bash
 
-  SampleToken
-    ✓ transfer token (xxms)
-    ✓ mint token (xxms)
-    ✓ burn token (xxxms)
+   SampleToken
+    ✓ Assigns initial balance (44ms)
+    ✓ Transfer adds amount to destination account (62ms)
+    ✓ Transfer emits event (50ms)
+    ✓ Can not transfer above the amount (52ms)
+    ✓ Can not transfer from empty account (43ms)
 
 
-  3 passing (1s)
+  5 passing (2s)
 
 ```
 
@@ -40,10 +42,9 @@ after testing if you want to deploy the contract using the command line.
 
 ```bash
 
-$ npx hardhat accounts
-$ npx hardhat node
+$ npm run test-rpc
 # Open another Terminal
-$ npx hardhat run scripts/sample-script.js --network localhost
+$ npm run deploy-local
 
 # result in npx hardhat node Terminal
 web3_clientVersion

@@ -5,7 +5,7 @@ describe("SampleToken", function() {
   let token;
   let accounts;
 
-  beforeEach("Deploy contract ",async () => {
+  before(async () => {
     const contract = await ethers.getContractFactory("ERC20FixedSupply");
     token = await contract.deploy();
     accounts = await ethers.getSigners();
@@ -29,12 +29,12 @@ describe("SampleToken", function() {
   });
 
   it('Can not transfer above the amount', async () => {
-    const totalSupply = await token.totalSupply();
-    await expect(token.transfer(accounts[1].address, totalSupply+1)).to.be.reverted;
+    const tokenFromOtherWallet = token.connect(accounts[2]);
+    await expect(tokenFromOtherWallet.transfer(accounts[1].address, 1)).to.be.reverted;
   });
 
   it('Can not transfer from empty account', async () => {
-    const tokenFromOtherWallet = token.connect(accounts[1].address);
+    const tokenFromOtherWallet = token.connect(accounts[2]);
     await expect(tokenFromOtherWallet.transfer(accounts[0].address, 1))
       .to.be.reverted;
   });
