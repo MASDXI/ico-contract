@@ -14,7 +14,7 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const contract = await hre.ethers.getContractFactory("ERC20FixedSupply");
+  const contract = await hre.ethers.getContractFactory("ICO");
   const token = await contract.deploy();
 
   await token.deployed();
