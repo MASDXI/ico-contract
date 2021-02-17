@@ -1,6 +1,6 @@
-# SampleToken-using-Hardhat
+# Initial Coin Offerring(ICO) contract
 
-Tutorial using Hardhat(Buidler) complie, deploy and automated unit tests Solidity.
+Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
 To run these tutorials, you must have the following installed:
 
@@ -26,15 +26,23 @@ $ npm run test
 expecting `sample-test.js` result.
 ```bash
 
-   SampleToken
-    ✓ Assigns initial balance (44ms)
-    ✓ Transfer adds amount to destination account (62ms)
-    ✓ Transfer emits event (50ms)
-    ✓ Can not transfer above the amount (52ms)
-    ✓ Can not transfer from empty account (43ms)
+  SampleToken
+    ✓ Assigns initial balance (81ms)
+    ✓ Minting token
+    ✓ Burning token
+    ✓ Do not have permission to minting token
+    ✓ Do not have permission to burning token
+    ✓ Buy token
+    ✓ Do not have have enough ether to buy token
+    ✓ Withdraw ether from contract
+    ✓ Do not have permission to withdraw ether from contract
+    ✓ Transfer adds amount to destination account (74ms)
+    ✓ Transfer emits event (47ms)
+    ✓ Can not transfer above the amount (38ms)
+    ✓ Can not transfer from empty account (39ms)
 
 
-  5 passing (2s)
+  13 passing (2s)
 
 ```
 
