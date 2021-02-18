@@ -31,7 +31,7 @@ describe("Initial Coin Offering (ICO) contract", function() {
   it("Buy token with ether", async function(){
     const wallet = token.connect(accounts[2]);
     const option = {value: amount};
-    const calculate = (option.value).mul(1000) // 1000 is declare in smart-contract 1 ether * 1000
+    const calculate = (option.value).mul(1000) // 1000 is declare in smart-contract msg.value * 1000
     await wallet.buy(option);
     expect(await wallet.balanceOf(accounts[2].address)).to.equal(calculate);
   });
@@ -94,7 +94,7 @@ describe("Initial Coin Offering (ICO) contract", function() {
     catch (err) {
       error = "sender doesn't have enough funds"
     }
-    expect(error).to.equal("sender doesn't have enough funds");
+    expect(error).to.equal("sender doesn't have enough funds"); // maybe can refactor
   });
 
 });
