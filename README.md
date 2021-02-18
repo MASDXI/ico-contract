@@ -3,6 +3,7 @@
 Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
 To run these tutorials, you must have the following installed:
+Read this in other languages: [English](README.md), [ไทย](README.th.md)
 
 - [nodejs](https://nodejs.org/en/)
 
@@ -96,6 +97,3 @@ module.exports = {
 };
 
 ```
-
-TODO
- - adding unit-test
