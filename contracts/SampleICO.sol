@@ -24,7 +24,7 @@ contract ICO is ERC20, Ownable {
       return true;
     }
 
-     /** 
+    /** 
       * @param account (type address) address of recipient
       * @param amount (type uint256) amount of token
       * @dev function use to burn token
