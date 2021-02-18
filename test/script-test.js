@@ -19,27 +19,26 @@ describe("Initial Coin Offering (ICO) contract", function() {
   });
 
   it("Do not have permission to minting token", async function(){
-    const tokenFromOtherWallet = token.connect(accounts[2]);
-    await expect(tokenFromOtherWallet.mint(accounts[2].address,amount)).to.be.reverted
+    const wallet = token.connect(accounts[2]);
+    await expect(wallet.mint(accounts[2].address,amount)).to.be.reverted
   });
 
   it("Do not have permission to burning token", async function(){
-    const tokenFromOtherWallet = token.connect(accounts[2]);
-    await expect(tokenFromOtherWallet.burn(accounts[2].address,amount)).to.be.reverted
+    const wallet = token.connect(accounts[2]);
+    await expect(wallet.burn(accounts[2].address,amount)).to.be.reverted
   });
 
   it("Buy token with ether", async function(){
-    const tokenFromOtherWallet = token.connect(accounts[2]);
+    const wallet = token.connect(accounts[2]);
     const option = {value: amount};
-    const wei = ethers.BigNumber.from(option.value)
-    const weiToToken = wei.mul(1000) // 1000 is declare in smart-contract 1 ether * 1000
-    await tokenFromOtherWallet.buy(option);
-    expect(await tokenFromOtherWallet.balanceOf(accounts[2].address)).to.equal(weiToToken);
+    const calculate = (option.value).mul(1000) // 1000 is declare in smart-contract 1 ether * 1000
+    await wallet.buy(option);
+    expect(await wallet.balanceOf(accounts[2].address)).to.equal(calculate);
   });
 
   it("Do not have permission to withdraw ether from contract", async function(){
-    const tokenFromOtherWallet = token.connect(accounts[2]);
-    await expect(tokenFromOtherWallet.withdraw(amount)).to.be.reverted;
+    const wallet = token.connect(accounts[2]);
+    await expect(wallet.withdraw(amount)).to.be.reverted;
   });
 
   it("Transfer adds amount to destination account", async function() {
@@ -54,13 +53,13 @@ describe("Initial Coin Offering (ICO) contract", function() {
   });
 
   it("Can not transfer above the amount", async () => {
-    const tokenFromOtherWallet = token.connect(accounts[3]);
-    await expect(tokenFromOtherWallet.transfer(accounts[1].address, 1)).to.be.reverted;
+    const wallet = token.connect(accounts[3]);
+    await expect(wallet.transfer(accounts[1].address, 1)).to.be.reverted;
   });
 
   it("Can not transfer from empty account", async () => {
-    const tokenFromOtherWallet = token.connect(accounts[3]);
-    await expect(tokenFromOtherWallet.transfer(accounts[0].address, 1)).to.be.reverted;
+    const wallet = token.connect(accounts[3]);
+    await expect(wallet.transfer(accounts[0].address, 1)).to.be.reverted;
   });
   
   it("Minting token", async function() {
@@ -77,19 +76,19 @@ describe("Initial Coin Offering (ICO) contract", function() {
     expect(after_burn).to.equal((before_burn.sub(amount)));
   });
   
-  //######################## TODO ########################
+  it("Withdraw ether from contract", async function(){
+    const before_withdraw = await accounts[0].getBalance()
+    await token.withdraw(amount);
+    const after_withdraw = await accounts[0].getBalance()
+    expect(before_withdraw.lt(after_withdraw)).to.equal(true);
+  });
 
   it("Do not have have enough ether to buy token", async function(){
-    // TODO
-    const test = ethers.BigNumber.from("999999999999999999999")
-    console.log("🚀 ~ file: script-test.js ~ line 92 ~ it ~ amount", amount.toString())
-    console.log("🚀 ~ file: script-test.js ~ line 91 ~ it ~ test", test.toString())
+  // TODO expect Error
+    const wallet = token.connect(accounts[3]);
+    const big_amount = ethers.utils.parseEther("999999")
+    const option = {value: big_amount};
+    expect(await wallet.buy(option)).to.throw();
   });
 
-  it("Withdraw ether from contract", async function(){
-    // TODO
-  });
-
-  1000000000000000000000
-  1000000000000000000
 });
