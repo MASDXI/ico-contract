@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+const { expect, assert  } = require("chai");
 
 describe("Initial Coin Offering (ICO) contract", function() {
 
@@ -84,11 +84,17 @@ describe("Initial Coin Offering (ICO) contract", function() {
   });
 
   it("Do not have have enough ether to buy token", async function(){
-  // TODO expect Error
     const wallet = token.connect(accounts[3]);
     const big_amount = ethers.utils.parseEther("999999")
     const option = {value: big_amount};
-    expect(await wallet.buy(option)).to.throw();
+    let error;
+    try {
+      await wallet.buy(option)
+    }
+    catch (err) {
+      error = "sender doesn't have enough funds"
+    }
+    expect(error).to.equal("sender doesn't have enough funds");
   });
 
 });
