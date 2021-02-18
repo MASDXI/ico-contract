@@ -1,4 +1,4 @@
-# Initial Coin Offerring (ICO) contract
+# Initial Coin Offering (ICO) contract
 
 Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
