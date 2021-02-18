@@ -1,10 +1,10 @@
-# Initial Coin Offerring(ICO) contract
+# Initial Coin Offerring (ICO) contract
 
 Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
 To run these tutorials, you must have the following installed:
 
-- [nodejs 1](https://nodejs.org/en/)
+- [nodejs](https://nodejs.org/en/)
 
 - [nvm](https://github.com/nvm-sh/nvm)
 
@@ -94,4 +94,8 @@ module.exports = {
         }
   }
 };
+
 ```
+
+TODO
+ - adding unit-test
