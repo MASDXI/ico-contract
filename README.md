@@ -2,8 +2,9 @@
 
 Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
-To run these tutorials, you must have the following installed:
 Read this in other languages: [English](README.md), [ไทย](README.th.md)
+
+To run these tutorials, you must have the following installed:
 
 - [nodejs](https://nodejs.org/en/)
 
@@ -13,7 +14,7 @@ Read this in other languages: [English](README.md), [ไทย](README.th.md)
 $ npm install
 ```
 
-to compile your smart contract to get an ABI and artifact of a smart contract for unit test using the command.
+to compile your smart contract to get an ABI and artifact of a smart contract.
 
 ```bash
 $ npm run compile
