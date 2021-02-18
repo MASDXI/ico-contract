@@ -1,7 +1,7 @@
 {
-  "name": "Token",
+  "name": "ico-contract",
   "version": "1.0.0",
-  "description": "",
+  "description": "Initial Coin Offering (ICO) contract in Ethereum",
   "main": "index.js",
   "scripts": {
     "compile": "npx hardhat compile",
