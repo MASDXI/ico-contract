@@ -28,20 +28,20 @@ $ npm run test
 expecting `sample-test.js` result.
 ```bash
 
-  SampleToken
-    ✓ Assigns initial balance (81ms)
-    ✓ Minting token
-    ✓ Burning token
-    ✓ Do not have permission to minting token
-    ✓ Do not have permission to burning token
-    ✓ Buy token
+  Initial Coin Offering (ICO) contract
+    ✓ Assigns initial balance (97ms)
+    ✓ Do not have permission to minting token (95ms)
+    ✓ Do not have permission to burning token (74ms)
+    ✓ Buy token with ether (212ms)
+    ✓ Do not have permission to withdraw ether from contract (69ms)
+    ✓ Transfer adds amount to destination account (99ms)
+    ✓ Transfer emits event (132ms)
+    ✓ Can not transfer above the amount (63ms)
+    ✓ Can not transfer from empty account (77ms)
+    ✓ Minting token (100ms)
+    ✓ Burning token (73ms)
+    ✓ Withdraw ether from contract (61ms)
     ✓ Do not have have enough ether to buy token
-    ✓ Withdraw ether from contract
-    ✓ Do not have permission to withdraw ether from contract
-    ✓ Transfer adds amount to destination account (74ms)
-    ✓ Transfer emits event (47ms)
-    ✓ Can not transfer above the amount (38ms)
-    ✓ Can not transfer from empty account (39ms)
 
 
   13 passing (2s)
@@ -79,7 +79,7 @@ eth_chainId (2)
 eth_getTransactionReceipt
 
 # result in npx hardhat run Terminal
-SampleToken deployed to: 0x5Fb...aa3
+Initial Coin Offering (ICO) contract deployed to: 0x5Fb...aa3
 
 ```
 your can edit deploy network endpoint at `hardhat.config.js`.

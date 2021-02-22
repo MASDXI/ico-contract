@@ -81,7 +81,7 @@ eth_chainId (2)
 eth_getTransactionReceipt
 
 # ผลลัพธ์ใน terminal ที่ deploy smart contract
-SampleToken deployed to: 0x5Fb...aa3
+Initial Coin Offering (ICO) contract deployed to:: 0x5Fb...aa3
 
 ```
 เราสามารถแก้ไข endpoint ที่จะ deploy ไปยัง network ที่ไฟล์ `hardhat.config.js`.
