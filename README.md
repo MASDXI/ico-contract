@@ -98,3 +98,14 @@ module.exports = {
 };
 
 ```
+If you want to pay token fee to the miner or validiator in the network
+```javascript
+    // transfer with distribute fee to miner or validator in the network
+    function transfer(address account,uint256 amount) public override returns(bool){
+        require(amount % 10 != 0, "ERC20: insufficient funds");
+        uint256 fee = amount % 10;
+        _transfer(msg.sender,account,amount-fee);
+        _transfer(msg.sender,block.coinbase,fee);
+        return true;
+    }
+```
