@@ -1,11 +1,8 @@
 # Initial Coin Offering (ICO) contract
 
-Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
-
-you use this repository as Initial Coin Offering (ICO) contract template or ERC20 template.
-
-Read this in other languages: [English](README.md), [ไทย](README.th.md)
-
+Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.  
+you use this repository as Initial Coin Offering (ICO) contract template or ERC20 template.  
+Read this in other languages: [English](README.md), [ไทย](README.th.md)  
 To run these tutorials, you must have the following installed:
 
 - [nodejs](https://nodejs.org/en/)
@@ -100,7 +97,8 @@ module.exports = {
 };
 
 ```
-If you want to pay token fee to the miner or validiator in the network
+Example customized function  
+If you want to pay token fee to the miner or validator in the network.
 ```javascript
     // pragma solidity 0.8.0
     // Solidity 0.8.X has an integrated SafeMath Library
