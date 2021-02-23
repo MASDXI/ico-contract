@@ -102,7 +102,18 @@ module.exports = {
 ```
 If you want to pay token fee to the miner or validiator in the network
 ```javascript
-    // transfer with distribute fee to miner or validator in the network
+    // pragma solidity 0.8.0
+    // Solidity 0.8.X has an integrated SafeMath Library
+    // override function transfer to distribute fee to miner or validator in the network
+    /* Diagram transfer with token fee
+                  Alice
+                    |
+                    | Transfer ERC20
+                    |_____ 
+                    |     |
+                    v     v
+                  Bob     Charlie (Miner)
+    */
     function transfer(address account,uint256 amount) public override returns(bool){
         require(amount % 10 != 0, "ERC20: insufficient funds");
         uint256 fee = amount % 10;
@@ -113,4 +124,7 @@ If you want to pay token fee to the miner or validiator in the network
 ```
 ## Donate
 Ethereum, Binance
-0xDc7b36Fd5b6e37373B9Cd0d7a291e2A9b9a71Dff 
+
+![alt text](./address.png)
+
+0xDc7b36Fd5b6e37373B9Cd0d7a291e2A9b9a71Dff
