@@ -2,6 +2,8 @@
 
 Tutorial using Hardhat(Buidler) to complie, deploy and automated unit tests Solidity smart contract.
 
+you use this repository as Initial Coin Offering (ICO) contract template or ERC20 template.
+
 Read this in other languages: [English](README.md), [ไทย](README.th.md)
 
 To run these tutorials, you must have the following installed:
