@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
   *@title Initial Coin Offerring(ICO) contract
 */
 contract ICO is ERC20, Ownable {
+  
     constructor() public ERC20("BasicCoin", "BSC") {
       _mint(msg.sender,  1000000 * (10 ** uint256(decimals())));
     }
@@ -41,7 +42,7 @@ contract ICO is ERC20, Ownable {
     function buy() public payable returns(bool sucess){
       require(msg.sender.balance >= msg.value && msg.value != 0 ether , "ICO: function buy invalid input");
       uint256 amount = msg.value * 1000;
-      _transfer(owner(), msg.sender, amount);
+      _transfer(owner(), _msgSender(), amount);
       return true;
     }
 
@@ -51,7 +52,7 @@ contract ICO is ERC20, Ownable {
     */
     function withdraw(uint256 amount) public onlyOwner returns(bool) {
       require(amount <= address(this).balance, "ICO: function withdraw invalid input");
-      payable(msg.sender).transfer(amount);
+      payable(_msgSender()).transfer(amount);
       return true;
     }
 }

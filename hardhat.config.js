@@ -8,8 +8,7 @@ task("accounts", "Prints the list of accounts", async () => {
   const accounts = await ethers.getSigners();
 
   for (const account of accounts) {
-    const balance
-    console.log("address :",account.address,"balance :",);
+    console.log("address :",account.address);
   }
 });
 
@@ -22,8 +21,12 @@ task("accounts", "Prints the list of accounts", async () => {
 module.exports = {
   networks: {
     localhost: {
-      url: "http://localhost:8545"
+      url: "http://localhost:8545",
+      chainId: 1337
     },
+    hardhat: {
+      chainId: 1337
+    }
   },
   solidity: {
     compilers: [
