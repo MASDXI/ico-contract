@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract ICO is ERC20, Ownable {
   
     constructor() public ERC20("BasicCoin", "BSC") {
-      _mint(msg.sender,  1000000 * (10 ** uint256(decimals())));
+      _mint(msg.sender, 1000000*(10**uint256(decimals())));
     }
     
     /**
@@ -19,7 +19,7 @@ contract ICO is ERC20, Ownable {
       * @param amount (type uint256) amount of token
       * @dev function use to mint token
     */
-    function mint(address account, uint256 amount) public onlyOwner returns(bool sucess){
+    function mint(address account, uint256 amount) public onlyOwner returns (bool sucess) {
       require(account != address(0) && amount != uint256(0), "ERC20: function mint invalid input");
       _mint(account, amount);
       return true;
@@ -30,7 +30,7 @@ contract ICO is ERC20, Ownable {
       * @param amount (type uint256) amount of token
       * @dev function use to burn token
     */
-    function burn(address account, uint256 amount) public onlyOwner returns(bool success){
+    function burn(address account, uint256 amount) public onlyOwner returns (bool success) {
       require(account != address(0) && amount != uint256(0), "ERC20: function burn invalid input");
       _burn(account, amount);
       return true;
@@ -39,8 +39,8 @@ contract ICO is ERC20, Ownable {
     /** 
       * @dev function to buy token with ether
     */
-    function buy() public payable returns(bool sucess){
-      require(msg.sender.balance >= msg.value && msg.value != 0 ether , "ICO: function buy invalid input");
+    function buy() public payable returns(bool sucess) {
+      require(msg.sender.balance >= msg.value && msg.value != 0 ether, "ICO: function buy invalid input");
       uint256 amount = msg.value * 1000;
       _transfer(owner(), _msgSender(), amount);
       return true;
@@ -50,7 +50,7 @@ contract ICO is ERC20, Ownable {
       * @param amount (type uint256) amount of ether
       * @dev function use to withdraw ether from contract
     */
-    function withdraw(uint256 amount) public onlyOwner returns(bool) {
+    function withdraw(uint256 amount) public onlyOwner returns (bool success) {
       require(amount <= address(this).balance, "ICO: function withdraw invalid input");
       payable(_msgSender()).transfer(amount);
       return true;
