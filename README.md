@@ -103,14 +103,25 @@ If you want to pay token fee to the miner or validator in the network.
     // pragma solidity 0.8.0
     // Solidity 0.8.X has an integrated SafeMath Library
     // override function transfer to distribute fee to miner or validator in the network
-    /* Diagram transfer with token fee
-                  Alice								Start	Alice   Balance: 101
-                    |										Bob 	Balance: 0
-                    | transfer(bob.address,101);			Charlie Balance: 0
+    /* Diagram transfer with token fees
+      ##### Before #####
+      A balance: 101
+      B balance: 0
+      C balance: 0
+
+      A.transfer(bob.address,101);
+                    A
+                    |	
+                    | transfer Tx
                     |_____ 
-                    |     |							End		Alice 	Balance: 0
-                    v     v									Bob		Balance: 100
-                  Bob     Charlie (Miner) 					Charlie Balance: 1
+                    |     |
+                    v     v				
+                    B     C
+
+      ##### After #####
+      A balance: 0
+      B balance: 100
+      C balance: 1
     */
     function transfer(address account,uint256 amount) public override returns(bool){
         require(amount % 10 != 0, "ERC20: insufficient funds");
