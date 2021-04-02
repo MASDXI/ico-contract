@@ -109,7 +109,7 @@ If you want to pay token fee to the miner or validator in the network.
       B balance: 0
       C balance: 0
 
-      A.transfer(bob.address,101);
+      A.transfer(B.address,101);
                     A
                     |	
                     | transfer Tx
