@@ -40,7 +40,7 @@ expecting `sample-test.js` result.
     ✓ Minting token (100ms)
     ✓ Burning token (73ms)
     ✓ Withdraw ether from contract (61ms)
-    ✓ Do not have have enough ether to buy token
+    ✓ Don't have enough ether to buy token
 
 
   13 passing (2s)
