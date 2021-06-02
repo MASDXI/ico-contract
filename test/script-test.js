@@ -83,7 +83,7 @@ describe("Initial Coin Offering (ICO) contract", function() {
     expect(before_withdraw.lt(after_withdraw)).to.equal(true);
   });
 
-  it("Don't have enough ether to buy token", async function(){
+  it("Do not have enough ether to buy token", async function(){
     const wallet = token.connect(accounts[3]);
     const big_amount = ethers.utils.parseEther("999999")
     const option = {value: big_amount};
