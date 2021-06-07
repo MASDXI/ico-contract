@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /** 
-  *@author AIS NEXT BlockChain Development
   *@title Initial Coin Offerring(ICO) contract
 */
 contract ICO is ERC20, Ownable {
