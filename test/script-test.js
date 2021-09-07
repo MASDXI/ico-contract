@@ -65,8 +65,8 @@ describe("Initial Coin Offering (ICO) contract", function() {
   it("Minting token", async function() {
     const before_mint = await token.balanceOf(accounts[0].address);
     await token.mint(accounts[0].address,amount);
-    const after_burn = await token.balanceOf(accounts[0].address);
-    expect(after_burn).to.equal((before_mint.add(amount)));
+    const after_mint = await token.balanceOf(accounts[0].address);
+    expect(after_mint).to.equal((before_mint.add(amount)));
   });
 
   it("Burning token", async function() {
