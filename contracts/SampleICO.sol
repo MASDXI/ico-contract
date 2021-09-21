@@ -1,16 +1,44 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.0 <0.8.0;
 
+// node_modules
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+// imoprt escorw
+// import payment splitter
+// import retrancy guard
+
+// local
+import "./const.so";
 
 /** 
   *@title Initial Coin Offerring(ICO) contract
 */
 contract ICO is ERC20, Ownable {
+
+    // string _tokenname
+    // string _tokenSymbol
+    // uint8 _decimals
+    // uint256 _totalSupply
   
     constructor() public ERC20("BasicCoin", "BSC") {
       _mint(msg.sender, 1000000*(10**uint256(decimals())));
+    }
+
+    /** 
+      * 
+      * constructor () public ERC20(_tokenName, _tokenSymbol) {
+      *  _mint(msg.sender, _totalSupply*(10**uint256(decimals())));
+      * }
+    */
+
+    /**
+      * @param account (type address) address of recipient
+      * @param amount (type uint256) amount of token
+      * @dev function use to mint token
+    */
+    function decimals() public returns (uint8) {
+      return _decimals;
     }
     
     /**
