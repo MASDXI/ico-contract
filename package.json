@@ -4,10 +4,12 @@
   "description": "Initial Coin Offering (ICO) contract in Ethereum",
   "main": "index.js",
   "scripts": {
+    "clean": "npx hardhat clean && rm -rf cache coverage coverage.json",
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "test-rpc": "npx hardhat node",
-    "deploy-local": "npx hardhat run scripts/sample-script.js --network localhost"
+    "deploy-local": "npx hardhat run scripts/sample-script.js --network localhost",
+    "coverage": "npx hardhat coverage"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "hardhat": "^2.0.6"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^3.4.0"
+    "@openzeppelin/contracts": "^3.4.0",
+    "solidity-coverage": "^0.7.17"
   }
 }

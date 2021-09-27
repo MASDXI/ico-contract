@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.6.0 <0.8.0;
 
 // import from node_modules @openzeppelin/contracts v4.0
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -20,14 +20,6 @@ contract ICO is ERC20, Ownable {
     // Sample constructor
     constructor() public ERC20("BasicCoin", "BSC") {
       _mint(msg.sender, 1000000*(10**uint256(decimals())));
-    }
-    /**
-      * @param account (type address) address of recipient
-      * @param amount (type uint256) amount of token
-      * @dev function use to mint token
-    */
-    function decimals() public returns (uint8) {
-      return _decimals;
     }
     
     /**
@@ -66,7 +58,7 @@ contract ICO is ERC20, Ownable {
       * @param amount (type uint256) amount of ether
       * @dev function use to withdraw ether from contract
     */
-    function withdrawEth(uint256 amount) public onlyOwner returns (bool success) {
+    function withdraw(uint256 amount) public onlyOwner returns (bool success) {
       require(amount <= address(this).balance, "ICO: function withdraw invalid input");
       payable(_msgSender()).transfer(amount);
       return true;
