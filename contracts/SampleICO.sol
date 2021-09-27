@@ -1,37 +1,26 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.6.0 <0.8.0;
+pragma solidity ^0.8.0;
 
-// node_modules
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+// import from node_modules @openzeppelin/contracts v4.0
 import "@openzeppelin/contracts/access/Ownable.sol";
-// imoprt escorw
-// import payment splitter
-// import retrancy guard
-
-// local
-import "./const.so";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 /** 
   *@title Initial Coin Offerring(ICO) contract
 */
 contract ICO is ERC20, Ownable {
 
-    // string _tokenname
-    // string _tokenSymbol
-    // uint8 _decimals
-    // uint256 _totalSupply
-  
+    // constructor() public ERC20("_name", "_symbol") {
+    //  // mint to `msg.sender` 
+    //  _mint(msg.sender, _amount*(10**uint256(decimals())));
+    //  // mint to `_address`
+    //  _mint(_address, _amount*(10**uint256(decimals())));
+    // }
+    
+    // Sample constructor
     constructor() public ERC20("BasicCoin", "BSC") {
       _mint(msg.sender, 1000000*(10**uint256(decimals())));
     }
-
-    /** 
-      * 
-      * constructor () public ERC20(_tokenName, _tokenSymbol) {
-      *  _mint(msg.sender, _totalSupply*(10**uint256(decimals())));
-      * }
-    */
-
     /**
       * @param account (type address) address of recipient
       * @param amount (type uint256) amount of token
@@ -77,7 +66,7 @@ contract ICO is ERC20, Ownable {
       * @param amount (type uint256) amount of ether
       * @dev function use to withdraw ether from contract
     */
-    function withdraw(uint256 amount) public onlyOwner returns (bool success) {
+    function withdrawEth(uint256 amount) public onlyOwner returns (bool success) {
       require(amount <= address(this).balance, "ICO: function withdraw invalid input");
       payable(_msgSender()).transfer(amount);
       return true;
