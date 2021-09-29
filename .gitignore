@@ -1,5 +1,9 @@
 node_modules
 
+#coverage files
+coverage
+coverage.json
+
 #Hardhat files
 cache
 artifacts
