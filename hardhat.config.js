@@ -1,5 +1,5 @@
 const { task } = require("hardhat/config");
-
+// require("hardhat-gas-reporter");
 require("@nomiclabs/hardhat-waffle");
 require("solidity-coverage");
 
@@ -32,14 +32,18 @@ module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.6.0"
-      },
-      {
         version: "0.8.0",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          }
+        }
       }
     ]
   },
   mocha: {
-    timeout: 20000
+    timeout: 20000,
+    slow: '0'
   }
 };

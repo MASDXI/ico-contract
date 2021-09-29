@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.6.0 <0.8.0;
+pragma solidity ^0.8.0;
 
 // import from node_modules @openzeppelin/contracts v4.0
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -18,7 +18,7 @@ contract ICO is ERC20, Ownable {
     // }
     
     // Sample constructor
-    constructor() public ERC20("BasicCoin", "BSC") {
+    constructor() ERC20("BasicCoin", "BSC") {
       _mint(msg.sender, 1000000*(10**uint256(decimals())));
     }
     
