@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 /** 
   *@title Initial Coin Offerring(ICO) contract
 */
-contract ICO is ERC20, Ownable {
+contract ICO is ERC20, Ownable, ReentrancyGuard {
 
     // constructor() public ERC20("_name", "_symbol") {
     //  // mint to `msg.sender` 
