@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 // import from node_modules @openzeppelin/contracts v4.0
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 /** 
   *@title Initial Coin Offerring(ICO) contract
@@ -47,7 +48,7 @@ contract ICO is ERC20, Ownable {
     /** 
       * @dev function to buy token with ether
     */
-    function buy() public payable returns(bool sucess) {
+    function buy() public payable nonReentrant returns (bool sucess) {
       require(msg.sender.balance >= msg.value && msg.value != 0 ether, "ICO: function buy invalid input");
       uint256 amount = msg.value * 1000;
       _transfer(owner(), _msgSender(), amount);
